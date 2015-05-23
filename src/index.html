@@ -7,4 +7,20 @@
 <body>
   hello world
 </body>
+<script src="scripts/lib/jquery.min.js"></script>
+<script src="scripts/lib/es6-promise.js"></script>
+<script src="scripts/Api.js"></script>
+<script>
+    $(function(){
+
+        var url = Api.getUrl({
+            'domain': '',
+            'path':'/ad/1009'
+        })
+        var p = Api.getResult({
+            url: url
+        })
+        console.log(url);
+    })
+</script>
 </html>
