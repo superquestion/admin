@@ -1,6 +1,7 @@
 # admin
 
 #nginx 配置
+```
 server {
         listen       80;
         server_name  abc.admin.net;
@@ -19,6 +20,6 @@ server {
 }
 ### nginx -s reload
 ### nginx -s stop
-
+```
 
 
