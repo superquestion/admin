@@ -1,12 +1,11 @@
 # admin
 
 #nginx 配置
+```
 server {
         listen       80;
         server_name  abc.admin.net;
         root  /Users/baixing/admin/src;
-
-
         #access_log  logs/host.access.log  main;
 
         location / {
@@ -19,6 +18,6 @@ server {
 }
 ### nginx -s reload
 ### nginx -s stop
-
+```
 
 
