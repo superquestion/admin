@@ -1,0 +1,100 @@
+<div class="container">
+    <div class="post-form" >
+        <form class="form-horizontal" id="post-form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">名称:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" name="title" id="title">
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="hidden" value="" name="pic" id="pic">
+                <label class="col-sm-2 control-label" for="file">图片:</label>
+                <div class="col-xs-4">
+                    <input  type="file" name="file" id="file">
+                </div>
+                <div class="form-group">
+                    <div class="preview"></div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="price">价格:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" name="price" id="price">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="title">行业:</label>
+                <div class="col-xs-4">
+                    <select name="industry_id" class="form-control">
+                        <option>请选择行业</option>
+                        <option value="1">电子</option>
+                        <option value="2">航空</option>
+                        <option value="3">食品</option>
+                        <option value="4">服务</option>
+                        <option value="5">金融</option>
+                        <option value="6">互联网</option>
+                        <option value="7">通信</option>
+                        <option value="8">化妆品</option>
+                    </select>
+                </div>
+            </div><div class="form-group">
+            <label class="col-sm-2 control-label" for="area">地区:</label>
+            <div class="col-xs-4">
+                <input class="form-control" type="text" name="area" id="area">
+            </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="expires_time">有效时间:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" name="expires_time" id="expires_time">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="deal_limit">交易限制:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" name="deal_limit" id="deal_limit">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="advertise_volume">投放总量:</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" name="advertise_volume" id="advertise_volume">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">任务类型:</label>
+                <div class="col-xs-4">
+                    <!--<input class="form-control" type="text" name="task_type" id="task_type">-->
+                    <select name="task_type" class="form-control">
+                        <option>请选择</option>
+                        <option value="1">先到先得</option>
+                        <option value="2">抽奖</option>
+                        <option value="3">智能选取</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="desc">描述:</label>
+                <div class="col-xs-4">
+                    <textarea class="form-control" name="desc" id="desc"></textarea>
+                </div>
+            </div>
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-2 control-label" for="desc">描述:</label>-->
+                <!--<div class="col-xs-4">-->
+                    <!--<textarea class="form-control" name="desc" id="desc"></textarea>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="form-group">
+                <input type="submit" value="发布" class="btn btn-default">
+            </div>
+
+
+        </form>
+    </div>
+</div>

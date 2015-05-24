@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        .header{
+            width: 100%;
+            height: 55px;
+            background: #cdbfe3;
+        }
+        img{
+            width: 90%;
+        }
+        .img{
+            text-align: center;
+            margin: 10px 0;
+        }
+        .content{
+            padding: 0 2% ;
+        }
+        .content h3{
+            line-height: 2;
+        }
+        .box{
+            border-top: 1px solid  #ddd;
+            padding-top: 10px;
+            border-bottom: 1px solid  #ddd;
+        }
+        .price {
+            color:#999
+        }
+        .price span{
+            color:orange;
+        }
+        p{
+            line-height: 2;
+            color: #333;
+        }
+        input{
+            height: 28px;
+            width: 150px;
+        }
+        button{
+            border: none;
+            width:72px;
+            height: 32px;
+            background: #5bc0de;
+            display: inline-block;
+            color:#fff;
+        }
+        .phone-box{
+            height: 48px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+</div>
+<div class="content" id="content">
+</div>
+<div class="tips"></div>
+</body>
+<script src="scripts/lib/artTemplate.js"></script>
+<script src="scripts/lib/jquery.min.js"></script>
+<script>
+    function getParams(url){
+        var url = url || window.location.href;
+        var index  = url.indexOf('?');
+        console.log(index);
+        var str = url.substring(index + 1, url.length);
+        if(str == ""){
+            return {};
+        }
+        var arr = str.split("&");
+        var params = {};
+        for(var i = 0, len = arr.length; i < len; i++){
+            var arr1 = arr[i].split("=");
+            params[arr1[0]]= arr1[1];
+        }
+        return params;
+    }
+    $(function(){
+        var params = getParams();
+        var id =params.id;
+        var mobile = params.mobile;
+        var type = params.type;
+        $.ajax({
+            url: 'http://58.215.179.69:6060/'+ mobile +'/ad/' + id + '/' + type,
+            dataType: "jsonp",
+            success:function(response){
+
+                var html = template('detail', {data:response});
+                document.getElementById('content').innerHTML = html;
+            }
+        })
+        $("body").delegate('#send','click', function(){
+            var num = $("#mobile").val();
+            if(num==''){
+                alert('不能不空！')
+                return false;
+            }
+            num = '86-' + num;
+            $.ajax({
+                url:'mobile/ajax/proxy/captcha/biz/2030',
+                type:'POST',
+                data: {mobile:num},
+                success:function(){
+                    $('.tips').html('发送成功！').show();
+                    setTimeout(function(){
+                        $('.tips').hide();
+                    },3000)
+                },
+                error:function(){
+                    $('.tips').html('发送失败！').show();
+                    setTimeout(function(){
+                        $('.tips').hide();
+                    },3000)
+                }
+            })
+        })
+
+    })
+</script>
+<script type="text/html" id="detail">
+    <div class="img">
+        <img src="<%=data.pic%>">
+    </div>
+    <div class="content">
+        <h3><%=data.title%></h3>
+        <div class="box">
+            <p class="phone-box">
+                <label>领取：</label>
+                <input type="text" name="phone" id="mobile">
+                <button id="send">发送验证码</button>
+            </p>
+        </div>
+        <div class="box">
+            <% var rebata= data.rebata_options%>
+            <%for(var i = 0, len = rebata.length; i< len; i++){%>
+            <p>
+                <span><%=rebata[i].title%>:</span>
+                <span><%=rebata[i].count%></span>
+            </p>
+            <%}%>
+        </div>
+        <div class="description-box">
+            <div class="description">
+                <p><%=data.desc%></p>
+            </div>
+        </div>
+    </div>
+
+</script>
